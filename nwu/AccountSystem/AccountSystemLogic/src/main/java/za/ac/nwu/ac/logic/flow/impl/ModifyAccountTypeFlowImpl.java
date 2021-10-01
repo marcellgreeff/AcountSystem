@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Transactional
-@Component("modifyAccountTypeFlowName")
+@Component
 public class ModifyAccountTypeFlowImpl implements ModifyAccountTypeFlow {
 
     @Override

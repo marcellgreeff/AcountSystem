@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.oracle</groupId>
+    <artifactId>truffle</artifactId>
+    <version>0.7</version>
+
+    <name>Truffle</name>
+    <description>
+        Truffle is a multi-language framework for executing dynamic languages
+        that achieves high performance when combined with Graal.
+    </description>
+    <url>http://openjdk.java.net/projects/graal</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License, version 2, with the Classpath Exception</name>
+            <url>http://openjdk.java.net/legal/gplv2+ce.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Truffle and Graal developers</name>
+            <email>graal-dev@openjdk.java.net</email>
+            <organization>Graal</organization>
+            <organizationUrl>http://openjdk.java.net/projects/graal</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:hg:http://hg.openjdk.java.net/graal/graal</connection>
+        <developerConnection>scm:hg:http://hg.openjdk.java.net/graal/graal</developerConnection>
+        <url>http://hg.openjdk.java.net/graal/graal</url>
+    </scm>
+</project>

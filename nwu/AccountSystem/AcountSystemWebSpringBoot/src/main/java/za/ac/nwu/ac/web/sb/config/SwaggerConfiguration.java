@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -33,15 +34,21 @@ public class SwaggerConfiguration {
                 .pathMapping("/")
                 .apiInfo(apiInfo());
     }
-    private ApiInfo apiInfo() {
+  /*  private ApiInfo apiInfo() {
         return new ApiInfo(
                 applicationName,
                 applicationDescription,
                 applicationVersion,
                 "",
-                new Contact("Your Name or Team Name", "", "email address"),
+                new Contact("Marcell(Owner)", "", "marcellgreeff47@gmail.com"),
                 "",
                 "",
                 Collections.emptyList());
+    }*/
+
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder().title("Discovery-Rewards")
+                .description("Managing your Miles")
+                .version("V1.0").build();
     }
 }

@@ -34,22 +34,21 @@ public class AccountTypeController {
         this.modifyAccountTypeFlow = modifyAccountTypeFlow;
     }
 
-    @GetMapping("/all")
-    @ApiOperation(value = "Gets all the configured Account types.", notes = "Returns a list of account types")
+    @GetMapping("All")
+    @ApiOperation(value = "Gets all the configured Account Types.", notes = "Returns a list of account types")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Account types returned", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
-
     public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll() {
         List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
         GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true, accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("")
-    @ApiOperation(value = "Creates a new AccountType.", notes = "Creates a new AccountType in the DB.")
+    @PostMapping("Create")
+    @ApiOperation(value = "Creates a new Account Type.", notes = "Creates a new AccountType in the DB.")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "The AccountType was created successfully", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
@@ -63,15 +62,14 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("{mnemonic}")
-    @ApiOperation(value = "Fetches the specified Account types.", notes = "Fetches the AccountType corresponding to the given mnemonic")
+    @GetMapping("Fetch")
+    @ApiOperation(value = "Fetches the specified Account Type.", notes = "Fetches the AccountType corresponding to the given mnemonic")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Goal Found"),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Resources not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class),
     })
-
     public ResponseEntity<GeneralResponse<AccountTypeDto>> getAccountType(
             @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
                     example = "MILES",
@@ -85,15 +83,14 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("{mnemonic}")
-    @ApiOperation(value = "Deletes the specified AccountType.", notes = "Deletes the AccountType corresponding to the given mnemonic.")
+    @DeleteMapping("Delete")
+    @ApiOperation(value = "Deletes the specified Account Type.", notes = "Deletes the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType deleted"),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Resource not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class),
     })
-
     public ResponseEntity<GeneralResponse<AccountTypeDto>> deletedAccountType(
             @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
                     example = "MILES",
@@ -106,8 +103,8 @@ public class AccountTypeController {
     return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
-    @PutMapping("{mnemonic}")
-    @ApiOperation(value = "Updates the specified AccountType.", notes = "Updates the AccountType corresponding to the given mnemonic.")
+    @PutMapping("Update")
+    @ApiOperation(value = "Updates the specified Account Type.", notes = "Updates the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType updated"),
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),

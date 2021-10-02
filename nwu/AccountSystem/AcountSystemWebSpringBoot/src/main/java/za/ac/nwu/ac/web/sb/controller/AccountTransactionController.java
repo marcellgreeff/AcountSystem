@@ -33,8 +33,8 @@ public class AccountTransactionController {
         this.fetchAccountTransactionFlow = fetchAccountTransactionFlow;
     }
 
-    @PostMapping("")
-    @ApiOperation(value =  "Creates a new AccountTransaction.", notes = "Creates a new AccountTransaction in the DB")
+    @PostMapping("Create")
+    @ApiOperation(value =  "Creates a new Account Transaction.", notes = "Creates a new AccountTransaction in the DB")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "The AccountTransaction was created successfully", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
@@ -52,7 +52,7 @@ public class AccountTransactionController {
         return generalResponseResponseEntity;
     }
 
-    @GetMapping("/all")
+    @GetMapping("All")
     @ApiOperation(value =  "Gets all the configured Account Types.", notes = "Return a list of account types")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Account types returned", response = GeneralResponse.class),
@@ -65,8 +65,8 @@ public class AccountTransactionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/{transactionId}")
-    @ApiOperation(value =  "Fetches the specified AccountTransaction.", notes = "Fetches the AccountTransaction corresponding to the given transactionId.")
+    @GetMapping("Fetch")
+    @ApiOperation(value =  "Fetches the specified Account Transaction.", notes = "Fetches the AccountTransaction corresponding to the given transactionId.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountTransaction Found", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),

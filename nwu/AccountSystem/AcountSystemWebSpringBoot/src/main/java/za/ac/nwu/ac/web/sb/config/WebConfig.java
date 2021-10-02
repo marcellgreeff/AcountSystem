@@ -10,7 +10,6 @@ import za.ac.nwu.ac.logic.config.LogicConfig;
 @ComponentScan(basePackages = {
         "za.ac.nwu.ac.web.sb.controller",
         "za.ac.nwu.ac.web.sb.exception",
-        "za.ac.nwu.ac.translator.config"
 })
 public class WebConfig {
 }

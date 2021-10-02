@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Table(name = "ACCOUNT_TX_DETAILS", schema = "MARCELL")
 public class AccountTransactionDetails implements Serializable {
 
+    private static final long serialVersionUID = -31119343363775125L;
     Long accountTransactionDetailsId;
     AccountTransaction accountTransaction;
     String partnerName;

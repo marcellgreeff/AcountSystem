@@ -12,6 +12,7 @@ import java.util.function.Supplier;
 
 public class AccountTransactionDto implements Serializable {
 
+    private static final long serialVersionUID = 5124413486652459051L;
     private Long transactionId;
     private String accountTypeMnemonic;
     private Long memberId;

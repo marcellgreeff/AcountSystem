@@ -12,8 +12,8 @@ import java.util.Objects;
 @ApiModel(value = "AccountType",
 description = "A DTO model that represents the AccountType")
 public class AccountTypeDto implements Serializable {
-    private static final long serialVersionUID = -4516516549843516854L;
 
+    private static final long serialVersionUID = 2538138663972118712L;
     private String mnemonic;
     private String accountTypeName;
     private LocalDate creationDate;

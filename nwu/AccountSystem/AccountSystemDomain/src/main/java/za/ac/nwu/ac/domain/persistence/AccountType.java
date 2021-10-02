@@ -11,9 +11,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ACCOUNT_TYPE", schema = "MARCELL")
 public class AccountType implements Serializable {
-@Id
-@SequenceGenerator(name = "ACCOUNT_SEQ", sequenceName = "MARCELL.ACCOUNT_SEQ", allocationSize = 1)
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_SEQ")
+
+    private static final long serialVersionUID = -5523354245483977469L;
+    @Id
+    @SequenceGenerator(name = "ACCOUNT_SEQ", sequenceName = "MARCELL.ACCOUNT_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_SEQ")
 
     @Column(name = "ACCOUNT_TYPE_ID")
     private Long accountTypeId;

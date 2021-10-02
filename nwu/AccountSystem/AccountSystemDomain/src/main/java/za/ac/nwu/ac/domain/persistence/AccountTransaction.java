@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "ACCOUNT_TRANSACTION", schema = "MARCELL")
 public class AccountTransaction implements Serializable {
 
+    private static final long serialVersionUID = -2794706207079707709L;
     @Id
     @SequenceGenerator(name = "ACCOUNT_TX_SEQ", sequenceName = "MARCELL.ACCOUNT_TX_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TX_SEQ")

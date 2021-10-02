@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class AccountTransactionDetailsDto implements Serializable {
 
+    private static final long serialVersionUID = -689596025456604294L;
     String partnerName;
     Long numberOfItems;
 

@@ -100,7 +100,9 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
 
     @Override
     public Integer update(String mnemonic, Long miles) {
-        accountTypeRepository.update(mnemonic, miles);
+        AccountType accountType = accountTypeRepository.getAccountTypeByMnemonic(mnemonic);
+        Long addedMiles = accountType.getMiles() + miles;
+        accountTypeRepository.update(mnemonic, addedMiles);
         return null;
     }
 

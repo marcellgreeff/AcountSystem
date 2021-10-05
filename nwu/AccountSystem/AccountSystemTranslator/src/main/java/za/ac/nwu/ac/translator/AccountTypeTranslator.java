@@ -21,5 +21,11 @@ public interface AccountTypeTranslator {
 
     AccountType getAccountTypeDbByMnemonic(String mnemonic);
 
+    AccountTypeDto update(String mnemonic, Long miles);
+
     void someMethod();
+
+    AccountTypeDto delete(String mnemonic);
+
+    Integer deleteAccountTypeByMnemonic(String mnemonic);
 }

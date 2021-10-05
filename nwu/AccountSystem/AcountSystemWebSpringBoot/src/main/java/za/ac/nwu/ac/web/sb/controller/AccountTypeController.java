@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.models.Response;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
+import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
 import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFlow;
@@ -63,8 +65,8 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("Fetch")
-    @ApiOperation(value = "Fetches the specified Account Type.", notes = "Fetches the AccountType corresponding to the given mnemonic")
+    @GetMapping("{mnemonic}")
+    @ApiOperation(value = "Fetches the specified Account types.", notes = "Fetches the AccountType corresponding to the given mnemonic")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Goal Found"),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
@@ -84,7 +86,7 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("Delete")
+    @DeleteMapping("{mnemonic}")
     @ApiOperation(value = "Deletes the specified Account Type.", notes = "Deletes the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType deleted"),
@@ -98,10 +100,11 @@ public class AccountTypeController {
                     name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic){
-
-    AccountTypeDto accountType = modifyAccountTypeFlow.deleteAccountType(mnemonic);
-    GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
-    return new ResponseEntity<>(response,HttpStatus.OK);
+    System.out.println(mnemonic);
+    modifyAccountTypeFlow.deleteAccountTypeByMnemonic(mnemonic);
+    System.out.println(mnemonic);
+    GeneralResponse response = new GeneralResponse<String>(true, "Deleted" );
+    return new ResponseEntity(response,HttpStatus.OK);
     }
 
     @PutMapping("Update")
@@ -113,11 +116,11 @@ public class AccountTypeController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class),
     })
     public ResponseEntity<GeneralResponse<AccountTypeDto>> updateAccountType(
-            @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
+/*            @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
                     example = "MILES",
                     name = "mnemonic",
                     required = true)
-            @PathVariable("mnemonic") final String mnemonic,
+            @RequestParam("mnemonic") final String mnemonic,
             @ApiParam(value = "The new AccountTypeName that the specified AccountType should be updated with.",
             name = "newAccountTypeName",
             required = true)
@@ -130,11 +133,15 @@ public class AccountTypeController {
             @ApiParam(value = "The amount of miles allocated to account",
                     name = "newMiles",
                     required = true)
-            @RequestParam("newMiles") final Long newMiles
+            @RequestParam("newMiles") final Long newMiles*/
 
-    ){
-        AccountTypeDto accountType = modifyAccountTypeFlow.updateAccountType(mnemonic, newAccountTypeName, newCreationDate, newMiles);
-        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            @ApiParam(value = "Request body to create a new AccountType.",
+                    required = true)
+            @RequestBody AccountTypeDto accountType)
+
+    {
+        modifyAccountTypeFlow.update(accountType.getMnemonic(), accountType.getMiles());
+        GeneralResponse<String> response = new GeneralResponse<>(true, "accountTypemod");
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 }

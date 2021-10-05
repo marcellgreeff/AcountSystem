@@ -58,16 +58,13 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     }
 
     @Override
-    public AccountTypeDto getAccountTypeByMnemonic(String mnemonic)
-    {
+    public AccountTypeDto getAccountTypeByMnemonic(String mnemonic) {
         try{
             AccountType accountType = accountTypeRepository.getAccountTypeByMnemonic(mnemonic);
             return new AccountTypeDto(accountType);
+        }catch (Exception e){
+            throw new RuntimeException("Unable to read from DB", e);
         }
-        catch (Exception e){
-            throw new RuntimeException("Unable to read from the DB", e);
-        }
-
     }
 
     @Override
@@ -102,7 +99,26 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     }
 
     @Override
+    public AccountTypeDto update(String mnemonic, Long miles) {
+        accountTypeRepository.update(mnemonic, miles);
+        return null;
+    }
+
+    @Override
     public void someMethod() {
+
+    }
+
+    @Override
+    public AccountTypeDto delete(String mnemonic) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteAccountTypeByMnemonic(String mnemonic) {
+        accountTypeRepository.deleteAccountTypeByMnemonic(mnemonic);
+       // accountTypeRepository.delete(accountType);
+        return 1;
 
     }
 

@@ -99,7 +99,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     }
 
     @Override
-    public AccountTypeDto update(String mnemonic, Long miles) {
+    public Integer update(String mnemonic, Long miles) {
         accountTypeRepository.update(mnemonic, miles);
         return null;
     }

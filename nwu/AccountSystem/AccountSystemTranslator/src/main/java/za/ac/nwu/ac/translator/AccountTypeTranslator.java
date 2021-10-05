@@ -21,7 +21,7 @@ public interface AccountTypeTranslator {
 
     AccountType getAccountTypeDbByMnemonic(String mnemonic);
 
-    AccountTypeDto update(String mnemonic, Long miles);
+    Integer update(String mnemonic, Long miles);
 
     void someMethod();
 

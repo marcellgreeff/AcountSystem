@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 
+import java.util.List;
+
 @Repository
 public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
 
@@ -14,6 +16,7 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
     " ACCOUNT_TYPE_ID," +
     " ACCOUNT_NAME," +
     " CREATION_DATE," +
+    " MILES," +
     " MNEMONIC" +
     " FROM" +
     " MARCELL.ACCOUNT_TYPE" +
@@ -27,14 +30,20 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
     " WHERE at.mnemonic = :mnemonic")
 AccountType getAccountTypeByMnemonic(String mnemonic);
 
-@Query(value = "SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto( " +
+/*@Query(value = "SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto( " +
         " at.mnemonic," +
         " at.accountTypeName, " +
         " at.creationDate )" +
         " FROM " +
         " AccountType at" +
-        " WHERE at.mnemonic = :mnemonic ")
+        " WHERE at.mnemonic = :mnemonic ")*/
 AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic);
 
     AccountType getAccountTypeDbByMnemonic(String mnemonic);
+
+    @Query(value = "SELECT" +
+            " at" +
+            " FROM " +
+            " AccountType at" )
+    List<AccountType> findAll();
 }

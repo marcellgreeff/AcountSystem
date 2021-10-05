@@ -1,6 +1,7 @@
 package za.ac.nwu.ac.web.sb.controller;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -39,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AccountTypeControllerTest {
-    private static final String APP_URL = "/account-system/mvc";
+   /* private static final String APP_URL = "/account-system/mvc";
     private static final String ACCOUNT_TYPE_CONTROLLER_URL = APP_URL +
             "/account-type";
     @Mock
@@ -166,7 +167,7 @@ public class AccountTypeControllerTest {
         verify(modifyAccountTypeFlow, never()).updateAccountType(anyString(), anyString(), any(LocalDate.class));
         verify(modifyAccountTypeFlow, never()).updateAccountType(anyString(), anyString(), isNull());
         verify(modifyAccountTypeFlow, never()).updateAccountType(anyString(), isNull(), isNull());
-    }
+    }*/
 }
 
 

@@ -22,7 +22,7 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
         this.accountTypeTranslator = accountTypeTranslator;
     }
 
-    @Override
+   /* @Override
     public AccountTypeDto create(AccountTypeDto accountType){
         if(null == accountType.getCreationDate()){
             accountType.setCreationDate(LocalDate.now());
@@ -34,6 +34,13 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
         //accountType.setAccountTransactions(accountTransactions);
 
         accountTypeTranslator.someMethod();
+        return accountTypeTranslator.create(accountType);
+    }*/
+    @Override
+    public AccountTypeDto create(AccountTypeDto accountType) {
+        if(null == accountType.getCreationDate()) {
+            accountType.setCreationDate(LocalDate.now());
+        }
         return accountTypeTranslator.create(accountType);
     }
 }

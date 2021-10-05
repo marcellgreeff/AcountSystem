@@ -8,5 +8,5 @@ public interface ModifyAccountTypeFlow {
 
     AccountTypeDto deleteAccountType(String mnemonic);
 
-    AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate);
+    AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate, Long miles);
 }

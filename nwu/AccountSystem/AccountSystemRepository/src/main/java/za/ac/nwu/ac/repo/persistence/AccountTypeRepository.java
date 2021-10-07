@@ -15,25 +15,6 @@ import java.util.List;
 @Repository
 public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
 
-/*@Query(value = "SELECT" +
-    " ACCOUNT_TYPE_ID," +
-    " ACCOUNT_NAME," +
-    " CREATION_DATE," +
-    " MILES," +
-    " MNEMONIC" +
-    " FROM" +
-    " MARCELL.ACCOUNT_TYPE" +
-    " WHERE MNEMONIC = :mnemonic ", nativeQuery = true)
-    AccountType getAccountTypeByMnemonicNativeQuery(String mnemonic);*/
-
-    @Query(value = "SELECT" +
-            " ACCOUNT_TYPE_ID" +
-            " FROM" +
-            " MARCELL.ACCOUNT_TYPE" +
-            " WHERE MNEMONIC = :mnemonic ", nativeQuery = true)
-    AccountType getAccountTypeByMnemonicNativeQuery(String mnemonic);
-
-
     @Query(value = "SELECT" +
             " at" +
             " FROM " +
@@ -46,16 +27,6 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
     @Modifying
     Integer deleteAccountTypeByMnemonic(@Param("mnemonic") String mnemonic);
 
-
-/*@Query(value = "SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto( " +
-        " at.mnemonic," +
-        " at.accountTypeName, " +
-        " at.creationDate )" +
-        " FROM " +
-        " AccountType at" +
-        " WHERE at.mnemonic = :mnemonic ")*/
-AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic);
-
     AccountType getAccountTypeDbByMnemonic(String mnemonic);
 
     @Query(value = "SELECT" +
@@ -63,9 +34,6 @@ AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic);
             " FROM " +
             " AccountType at" )
     List<AccountType> findAll();
-/*
-    @Query(value = "UPDATE ACCOUNT_TYPE set MILES = 100", nativeQuery = true)
-    AccountTypeDto save(AccountTypeDto accountType);*/
 
    @Query(value = "UPDATE ACCOUNT_TYPE set MILES = :miles WHERE MNEMONIC = :mnemonic", nativeQuery = true)
    @Modifying

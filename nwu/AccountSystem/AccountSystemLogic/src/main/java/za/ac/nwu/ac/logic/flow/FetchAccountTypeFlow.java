@@ -13,5 +13,4 @@ public interface FetchAccountTypeFlow {
 
     AccountType getAccountTypeDbEntityByMnemonic(String accountTypeMnemonic);
 
-    AccountTypeDto getAccountTypeByMnemonicNativeQuery(String mnemonic);
 }

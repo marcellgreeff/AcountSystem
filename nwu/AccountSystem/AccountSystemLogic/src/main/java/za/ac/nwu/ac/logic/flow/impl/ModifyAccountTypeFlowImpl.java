@@ -18,15 +18,6 @@ public class ModifyAccountTypeFlowImpl implements ModifyAccountTypeFlow {
     public ModifyAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator) {
         this.accountTypeTranslator = accountTypeTranslator;
     }
-    @Override
-    public AccountTypeDto deleteAccountType(String mnemonic) {
-        return accountTypeTranslator.delete(mnemonic);
-    }
-
-    @Override
-    public AccountTypeDto updateAccountType(AccountType accountType) {
-        return null;
-    }
 
     @Override
     public Integer update(String mnemonic, Long miles) {

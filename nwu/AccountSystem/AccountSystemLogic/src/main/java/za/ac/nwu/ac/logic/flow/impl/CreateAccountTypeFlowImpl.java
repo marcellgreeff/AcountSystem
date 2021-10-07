@@ -22,20 +22,6 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
         this.accountTypeTranslator = accountTypeTranslator;
     }
 
-   /* @Override
-    public AccountTypeDto create(AccountTypeDto accountType){
-        if(null == accountType.getCreationDate()){
-            accountType.setCreationDate(LocalDate.now());
-        }
-
-        //AccountType accountType = accountTypeDto.getAccountType();
-        //Set<AccountTransaction> accountTransactions = new HashSet<>();
-        //accountTransactions.add(new AccountTransaction(accountType, 123L, 58L, LocalDate.now()));
-        //accountType.setAccountTransactions(accountTransactions);
-
-        accountTypeTranslator.someMethod();
-        return accountTypeTranslator.create(accountType);
-    }*/
     @Override
     public AccountTypeDto create(AccountTypeDto accountType) {
         if(null == accountType.getCreationDate()) {

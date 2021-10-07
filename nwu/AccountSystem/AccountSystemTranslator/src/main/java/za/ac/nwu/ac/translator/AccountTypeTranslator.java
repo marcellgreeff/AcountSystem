@@ -13,7 +13,6 @@ public interface AccountTypeTranslator {
 
     AccountTypeDto getAccountTypeByMnemonic(String mnemonic);
 
-
     AccountType getAccountTypeDbByMnemonic(String mnemonic);
 
     Integer update(String mnemonic, Long miles);

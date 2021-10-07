@@ -81,7 +81,6 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     @Override
     public Integer deleteAccountTypeByMnemonic(String mnemonic) {
         accountTypeRepository.deleteAccountTypeByMnemonic(mnemonic);
-       // accountTypeRepository.delete(accountType);
         return 1;
 
     }

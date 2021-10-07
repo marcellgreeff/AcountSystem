@@ -56,5 +56,15 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
         repo.create(accountTransactionId, miles, LocalDate.now());
     }
 
+    @Override
+    public Integer deleteAccountTransactionByAccountId(Long accountTypeId) {
+        try {
+            repo.deleteAccountTransactionById(accountTypeId);
+            return 1;
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to read from the database",e);
+        }
+    }
+
 
 }

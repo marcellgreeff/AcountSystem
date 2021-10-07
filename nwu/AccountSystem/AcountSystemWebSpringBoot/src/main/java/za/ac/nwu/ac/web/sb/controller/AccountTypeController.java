@@ -107,7 +107,7 @@ public class AccountTypeController {
     return new ResponseEntity(response,HttpStatus.OK);
     }
 
-    @PutMapping("Update")
+    @PutMapping("{mnemonic} ,{miles}")
     @ApiOperation(value = "Updates the specified Account Type.", notes = "Updates the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType updated"),
@@ -116,26 +116,20 @@ public class AccountTypeController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class),
     })
     public ResponseEntity<GeneralResponse<AccountTypeDto>> updateAccountType(
-/*            @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
+            @ApiParam(value = "The Mnemonic of the miles you want to update.",
                     example = "MILES",
                     name = "mnemonic",
                     required = true)
-            @RequestParam("mnemonic") final String mnemonic,
-            @ApiParam(value = "The new AccountTypeName that the specified AccountType should be updated with.",
-            name = "newAccountTypeName",
-            required = true)
-            @RequestParam("newAccountTypeName") final String newAccountTypeName,
-            @ApiParam(value = "The optional new date with which to update CreationDate in ISO date format (yyyy-MM-dd)",
-                    name = "newCreationDate")
-            @RequestParam(value = "newCreationDate", required = false)
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-            LocalDate newCreationDate,
-            @ApiParam(value = "The amount of miles allocated to account",
-                    name = "newMiles",
+            @PathVariable("mnemonic") final String mnemonic,
+            @ApiParam(value = "The miles you want to add or subtract.",
+                    example = "5000 / -5000",
                     required = true)
-            @RequestParam("newMiles") final Long newMiles*/
+            @PathVariable("miles") final Long miles){
+        modifyAccountTypeFlow.update(mnemonic, miles);
+        GeneralResponse response = new GeneralResponse<String>(true, "Updated");
+        return new ResponseEntity(response, HttpStatus.OK);
 
-            @ApiParam(value = "Request body to create a new AccountType.",
+           /* @ApiParam(value = "Request body to create a new AccountType.",
                     required = true)
             @RequestBody AccountTypeDto accountType)
 
@@ -143,5 +137,7 @@ public class AccountTypeController {
         modifyAccountTypeFlow.update(accountType.getMnemonic(), accountType.getMiles());
         GeneralResponse<String> response = new GeneralResponse<>(true, "accountTypemod");
         return new ResponseEntity(response, HttpStatus.OK);
+    }*/
+
     }
 }

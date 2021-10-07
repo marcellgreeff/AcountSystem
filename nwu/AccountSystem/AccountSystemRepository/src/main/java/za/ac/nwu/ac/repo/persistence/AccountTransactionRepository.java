@@ -15,4 +15,8 @@ public interface AccountTransactionRepository extends JpaRepository<AccountTrans
     @Modifying
     @Query(value = "INSERT INTO ACCOUNT_TRANSACTION(ACCOUNT_TYPE_ID, AMOUNT, TX_DATE) VALUES(:accountTransactionId, :miles, (TO_DATE(:date,'dd/mm/yyyy')))", nativeQuery = true)
     void create(@Param("accountTransactionId") Long accountTransactionId, @Param("miles") Long miles, @Param("date") LocalDate now);
+
+    @Modifying
+    @Query(value = "DELETE FROM ACCOUNT_TRANSACTION WHERE ACCOUNT_TYPE_ID = :accountTypeId", nativeQuery = true)
+    Integer deleteAccountTransactionById(@Param("accountTypeId") Long accountTypeId);
 }

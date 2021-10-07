@@ -12,4 +12,6 @@ public interface AccountTransactionTranslator {
     AccountTransaction getAccountTransactionByPk(Long transactionId);
 
     void create(Long accountTransactionId, Long miles);
+
+    Integer deleteAccountTransactionByAccountId(Long accountTypeId);
 }

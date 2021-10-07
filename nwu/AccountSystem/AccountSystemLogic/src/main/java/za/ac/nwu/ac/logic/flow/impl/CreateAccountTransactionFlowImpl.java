@@ -16,6 +16,7 @@ import za.ac.nwu.ac.translator.AccountTransactionDetailsTranslator;
 import za.ac.nwu.ac.translator.AccountTransactionTranslator;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 @Transactional
 @Component
@@ -65,5 +66,10 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
         AccountTransactionDto results = new AccountTransactionDto(createdAccountTransaction);
         LOGGER.info("The return object is {}", results);
         return results;
+    }
+
+    @Override
+    public void create(Long accountTransactionId, Long miles) {
+        accountTransactionTranslator.create(accountTransactionId, miles);
     }
 }

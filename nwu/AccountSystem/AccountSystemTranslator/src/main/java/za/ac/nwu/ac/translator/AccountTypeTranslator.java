@@ -20,4 +20,6 @@ public interface AccountTypeTranslator {
     void someMethod();
 
     Integer deleteAccountTypeByMnemonic(String mnemonic);
+
+    Long getIdByMnemonic(String mnemonic);
 }

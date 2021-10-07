@@ -10,4 +10,5 @@ public interface ModifyAccountTypeFlow {
     Integer update(String mnemonic, Long miles);
 
    Integer deleteAccountTypeByMnemonic(String mnemonic);
+
 }

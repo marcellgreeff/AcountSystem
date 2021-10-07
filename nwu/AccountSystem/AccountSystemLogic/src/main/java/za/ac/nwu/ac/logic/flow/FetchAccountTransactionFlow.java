@@ -9,4 +9,6 @@ public interface FetchAccountTransactionFlow {
     List<AccountTransactionDto> getAllAccountTransactions();
 
     AccountTransactionDto getAccountTransactionById(Long transactionId);
+
+
 }

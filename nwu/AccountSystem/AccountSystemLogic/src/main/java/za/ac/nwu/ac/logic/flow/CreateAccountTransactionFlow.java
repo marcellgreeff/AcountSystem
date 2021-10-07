@@ -7,4 +7,6 @@ import java.io.Serializable;
 public interface CreateAccountTransactionFlow {
 
     AccountTransactionDto create(AccountTransactionDto accountTransaction);
+
+    void create(Long accountTransactionId, Long miles);
 }

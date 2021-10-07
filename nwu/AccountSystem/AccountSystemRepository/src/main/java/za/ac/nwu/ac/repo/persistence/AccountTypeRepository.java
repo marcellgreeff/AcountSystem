@@ -38,4 +38,7 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
    @Query(value = "UPDATE ACCOUNT_TYPE set MILES = :miles WHERE MNEMONIC = :mnemonic", nativeQuery = true)
    @Modifying
     Integer update(@Param("mnemonic") String mnenomic, @Param("miles") Long miles);
+
+    @Query(value = "SELECT ACCOUNT_TYPE_ID FROM ACCOUNT_TYPE WHERE MNEMONIC = :mnemonic", nativeQuery = true)
+    Long getIdByMnemonic(@Param("mnemonic") String mnemonic);
 }

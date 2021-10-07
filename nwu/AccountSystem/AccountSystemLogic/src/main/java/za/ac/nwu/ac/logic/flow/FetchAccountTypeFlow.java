@@ -12,5 +12,5 @@ public interface FetchAccountTypeFlow {
     AccountTypeDto getAccountTypeByMnemonic(String mnemonic);
 
     AccountType getAccountTypeDbEntityByMnemonic(String accountTypeMnemonic);
-
+    Long getIdByMnemonic(String mnemonic);
 }

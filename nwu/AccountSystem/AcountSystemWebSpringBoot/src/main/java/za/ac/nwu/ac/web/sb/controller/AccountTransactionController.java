@@ -32,7 +32,7 @@ public class AccountTransactionController {
         this.createAccountTransactionFlow = createAccountTransactionFlow;
         this.fetchAccountTransactionFlow = fetchAccountTransactionFlow;
     }
-
+/*
     @PostMapping("Create")
     @ApiOperation(value =  "Creates a new Account Transaction.", notes = "Creates a new AccountTransaction in the DB")
     @ApiResponses(value = {
@@ -50,7 +50,7 @@ public class AccountTransactionController {
         ResponseEntity<GeneralResponse<AccountTransactionDto>> generalResponseResponseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
         LOGGER.info("Response time {}", ((System.nanoTime() - startTime) / 1000000L));
         return generalResponseResponseEntity;
-    }
+    }*/
 
     @GetMapping("All")
     @ApiOperation(value =  "Gets all the configured Account Types.", notes = "Return a list of account types")

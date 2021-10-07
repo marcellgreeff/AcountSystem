@@ -7,6 +7,7 @@ import za.ac.nwu.ac.repo.persistence.AccountTransactionRepository;
 import za.ac.nwu.ac.translator.AccountTransactionDetailsTranslator;
 import za.ac.nwu.ac.translator.AccountTransactionTranslator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,4 +50,11 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
             throw new RuntimeException("Unable to read from the DB", e);
         }
     }
+
+    @Override
+    public void create(Long accountTransactionId, Long miles) {
+        repo.create(accountTransactionId, miles, LocalDate.now());
+    }
+
+
 }

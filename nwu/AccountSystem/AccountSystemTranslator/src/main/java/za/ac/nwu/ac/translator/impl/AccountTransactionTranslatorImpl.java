@@ -44,8 +44,15 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
     }
 
     @Override
-    public void create(Long accountTransactionId, Long miles) {
-        repo.create(accountTransactionId, miles, LocalDate.now());
+    public void create(Long accountTransactionId, Long miles, Boolean date, LocalDate currentDate) {
+        if (!date)
+        {
+            repo.create(accountTransactionId, miles, LocalDate.now());
+        }else
+        {
+            repo.create(accountTransactionId, miles, currentDate);
+        }
+
     }
 
     @Override

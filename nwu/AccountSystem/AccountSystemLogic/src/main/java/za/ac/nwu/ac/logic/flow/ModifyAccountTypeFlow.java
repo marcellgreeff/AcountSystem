@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public interface ModifyAccountTypeFlow {
 
-    Integer update(String mnemonic, Long miles);
+    Integer update(String mnemonic, Long miles, Boolean date, LocalDate currentDate);
 
    Integer deleteAccountTypeByMnemonic(String mnemonic);
 

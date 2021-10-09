@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.translator.AccountTransactionTranslator;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 
 @Transactional
 @Component
@@ -43,7 +44,7 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
     }
 
     @Override
-    public void create(Long accountTransactionId, Long miles) {
-        accountTransactionTranslator.create(accountTransactionId, miles);
+    public void create(Long accountTransactionId, Long miles, Boolean date, LocalDate currentDate) {
+        accountTransactionTranslator.create(accountTransactionId, miles, date, currentDate);
     }
 }

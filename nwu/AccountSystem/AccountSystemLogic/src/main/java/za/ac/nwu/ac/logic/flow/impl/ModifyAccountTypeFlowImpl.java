@@ -30,10 +30,10 @@ public class ModifyAccountTypeFlowImpl implements ModifyAccountTypeFlow {
     }
 
     @Override
-    public Integer update(String mnemonic, Long miles) {
+    public Integer update(String mnemonic, Long miles, Boolean date, LocalDate currentDate) {
        Long accountTransactionId = fetchAccountTypeFlow.getIdByMnemonic(mnemonic);
        accountTypeTranslator.update(mnemonic, miles);
-       createAccountTransactionFlow.create(accountTransactionId, miles);
+       createAccountTransactionFlow.create(accountTransactionId, miles, date, currentDate);
        return 1;
     }
 

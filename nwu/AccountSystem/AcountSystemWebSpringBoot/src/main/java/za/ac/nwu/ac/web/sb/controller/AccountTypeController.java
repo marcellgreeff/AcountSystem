@@ -19,6 +19,7 @@ import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.ModifyAccountTypeFlow;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -100,14 +101,12 @@ public class AccountTypeController {
                     name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic){
-    System.out.println(mnemonic);
     modifyAccountTypeFlow.deleteAccountTypeByMnemonic(mnemonic);
-    System.out.println(mnemonic);
     GeneralResponse response = new GeneralResponse<String>(true, "Deleted" );
     return new ResponseEntity(response,HttpStatus.OK);
     }
 
-    @PutMapping("{mnemonic} ,{miles}")
+    @PutMapping("Update")
     @ApiOperation(value = "Updates the specified Account Type.", notes = "Updates the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountType updated"),
@@ -119,12 +118,22 @@ public class AccountTypeController {
             @ApiParam(value = "The Mnemonic of the miles you want to update.",
                     name = "mnemonic",
                     required = true)
-            @PathVariable("mnemonic") final String mnemonic,
+            @RequestParam("mnemonic") final String mnemonic,
+            @ApiParam(value = "True(1) if use own date else False(0) for current date",
+            name = "date",
+            required = true)
+            @RequestParam(value = "date", defaultValue = "false") final Boolean date,
+            @ApiParam(value = "Own Date if choice",
+            name = "currentDate",
+            required = true)
+            @RequestParam("currentDate")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) final LocalDate currentDate,
             @ApiParam(value = "The miles you want to add or subtract.",
                     required = true)
-            @PathVariable("miles") final Long miles){
-        modifyAccountTypeFlow.update(mnemonic, miles);
-        GeneralResponse response = new GeneralResponse<String>(true, "Updated");
+            @RequestParam("miles") final Long miles){
+        System.out.println(date + "========" + currentDate);
+        modifyAccountTypeFlow.update(mnemonic, miles, date, currentDate);
+        GeneralResponse response = new GeneralResponse<>(true, "Updated");
         return new ResponseEntity(response, HttpStatus.OK);
     }
 }

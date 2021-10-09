@@ -11,7 +11,7 @@ public interface AccountTransactionTranslator {
 
     List<AccountTransactionDto> getAllAccountTransactions();
 
-    void create(Long accountTransactionId, Long miles);
+    void create(Long accountTransactionId, Long miles, Boolean date, LocalDate currentDate);
 
     Integer deleteAccountTransactionByAccountId(Long accountTypeId);
 

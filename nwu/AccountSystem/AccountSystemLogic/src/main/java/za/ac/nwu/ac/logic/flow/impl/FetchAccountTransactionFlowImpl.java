@@ -33,6 +33,4 @@ public class FetchAccountTransactionFlowImpl implements FetchAccountTransactionF
     public List<AccountTransactionDto> getAccountTransactionById(Long accountTypeId) {
         return translator.getAccountTransactionById(accountTypeId);
     }
-
-
 }

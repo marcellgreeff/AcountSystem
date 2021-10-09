@@ -22,7 +22,6 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
             " WHERE at.mnemonic = :mnemonic")
     AccountType getAccountTypeByMnemonic(String mnemonic);
 
-    /*@Query(value = "DELETE FROM ACCOUNT_TYPE WHERE MNEMONIC = :mnemonic", nativeQuery = true)*/
     @Query(value = "DELETE FROM ACCOUNT_TYPE WHERE MNEMONIC = :mnemonic",nativeQuery = true)
     @Modifying
     Integer deleteAccountTypeByMnemonic(@Param("mnemonic") String mnemonic);

@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface AccountTransactionTranslator {
     AccountTransaction save(AccountTransaction accountTransaction);
+
     List<AccountTransactionDto> getAllAccountTransactions();
 
     void create(Long accountTransactionId, Long miles);

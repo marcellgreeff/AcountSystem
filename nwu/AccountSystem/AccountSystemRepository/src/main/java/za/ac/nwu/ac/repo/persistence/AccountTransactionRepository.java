@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
+import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +25,6 @@ public interface AccountTransactionRepository extends JpaRepository<AccountTrans
     @Query(value = "SELECT * FROM ACCOUNT_TRANSACTION WHERE ACCOUNT_TYPE_ID = :accountTypeId", nativeQuery = true)
     List<AccountTransaction> getAccountTransactionById(@Param("accountTypeId") Long accountTypeId);
 
-    @Query(value = "SELECT * FROM ACCOUNT_TRANSACTION",nativeQuery = true)
-    AccountTransaction getAllAccountTransactions();
+    @Query(value = "SELECT at FROM AccountTransaction at")
+    List<AccountTransaction> findAll();
 }

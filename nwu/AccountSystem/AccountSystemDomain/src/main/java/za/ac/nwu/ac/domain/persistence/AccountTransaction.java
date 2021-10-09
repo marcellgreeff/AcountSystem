@@ -53,7 +53,6 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
-
     @Column(name = "AMOUNT")
     public Long getAmount() {
         return amount;

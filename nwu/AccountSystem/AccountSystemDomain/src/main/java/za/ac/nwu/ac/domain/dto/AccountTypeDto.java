@@ -39,7 +39,6 @@ public class AccountTypeDto implements Serializable {
             name = "Mnemonic",
             notes = "Uniquely identifies the account type",
             dataType = "java.lang.String",
-            example = "What's your Mnemonic?",
             required = true)
     public String getMnemonic() {return mnemonic;}
     public void setMnemonic(String mnemonic) {this.mnemonic = mnemonic;}
@@ -49,7 +48,6 @@ public class AccountTypeDto implements Serializable {
             name = "Name",
             notes = "The name of the AccountType",
             dataType = "java.lang.String",
-            example = "Current/New AccountType name.",
             allowEmptyValue = false,
             required = true)
     public String getAccountTypeName() {return accountTypeName;}
@@ -60,7 +58,6 @@ public class AccountTypeDto implements Serializable {
             name = "CreationDate",
             notes = "This is the date on which the AccountType was created",
             dataType = "java.lang.LocalDate",
-            example = "Current/New AccountType creationdate.",
             allowEmptyValue = false,
             required = true)
     public LocalDate getCreationDate() {return creationDate;}
@@ -71,7 +68,6 @@ public class AccountTypeDto implements Serializable {
             name = "Miles",
             notes = "This is the amount of Miles allocated to account",
             dataType = "java.lang.Long",
-            example = "Current/New AccountType Miles.",
             allowEmptyValue = false,
             required = true)
     public Long getMiles(){return miles;}

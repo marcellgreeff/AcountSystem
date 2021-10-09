@@ -18,7 +18,6 @@ public class AccountTransaction implements Serializable {
     private AccountType accountType;
     private Long amount;
     private LocalDate transactionDate;
-    private AccountTransactionDetails details;
 
     public AccountTransaction(){
     }
@@ -72,11 +71,6 @@ public class AccountTransaction implements Serializable {
     public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
-    @OneToOne(targetEntity = AccountTransactionDetails.class, fetch = FetchType.LAZY, mappedBy = "accountTransaction", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    public AccountTransactionDetails getDetails(){
-        return getDetails();
-    }
-    public void setDetails(AccountTransactionDetails details){ this.details = details; }
 
     @Override
     public boolean equals(Object o) {

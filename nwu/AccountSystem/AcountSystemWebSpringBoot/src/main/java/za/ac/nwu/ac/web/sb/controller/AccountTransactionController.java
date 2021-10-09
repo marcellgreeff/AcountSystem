@@ -60,29 +60,28 @@ public class AccountTransactionController {
             @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<List<AccountTransactionDto>>> getAll() {
-        List<AccountTransactionDto> AccountTransactions = fetchAccountTransactionFlow.getAllAccountTransactions();
-        GeneralResponse<List<AccountTransactionDto>> response = new GeneralResponse<>(true, AccountTransactions);
+        List<AccountTransactionDto> accountTransaction = fetchAccountTransactionFlow.getAllAccountTransactions();
+        GeneralResponse<List<AccountTransactionDto>> response = new GeneralResponse<>(true, accountTransaction);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("Fetch")
-    @ApiOperation(value =  "Fetches the specified Account Transaction.", notes = "Fetches the AccountTransaction corresponding to the given transactionId.")
+    @GetMapping("accountTypeId")
+    @ApiOperation(value =  "Fetches the specified Account Transactions.", notes = "Fetches the AccountTransactions corresponding to the given AccountType Id.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "AccountTransaction Found", response = GeneralResponse.class),
             @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
             @ApiResponse(code = 404, message = "Resource not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
     })
-    public ResponseEntity<GeneralResponse<AccountTransactionDto>> getAccountTransaction(
-        @ApiParam(value = "The transactionId that uniquely identifies the AccountTransaction.",
+    public ResponseEntity<GeneralResponse<List<AccountTransactionDto>>> getAccountTransaction(
+        @ApiParam(value = "The accountTypeId that uniquely identifies the AccountTransaction.",
                 example = "50002",
-                name = "transactionId",
+                name = "accountTypeId",
                 required = true)
-        @PathVariable("transactionId") final Long transactionId){
+        @RequestParam("accountTypeId") final Long accountTypeId){
 
-        AccountTransactionDto AccountTransaction = fetchAccountTransactionFlow.getAccountTransactionById(transactionId);
-        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransaction);
-
+        List<AccountTransactionDto> accountTransactionDto = fetchAccountTransactionFlow.getAccountTransactionById(accountTypeId);
+        GeneralResponse<List<AccountTransactionDto>> response = new GeneralResponse<>(true, accountTransactionDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

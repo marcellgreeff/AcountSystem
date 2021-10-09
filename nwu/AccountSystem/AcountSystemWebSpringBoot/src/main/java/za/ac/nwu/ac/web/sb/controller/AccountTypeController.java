@@ -117,27 +117,14 @@ public class AccountTypeController {
     })
     public ResponseEntity<GeneralResponse<AccountTypeDto>> updateAccountType(
             @ApiParam(value = "The Mnemonic of the miles you want to update.",
-                    example = "MILES",
                     name = "mnemonic",
                     required = true)
             @PathVariable("mnemonic") final String mnemonic,
             @ApiParam(value = "The miles you want to add or subtract.",
-                    example = "5000 / -5000",
                     required = true)
             @PathVariable("miles") final Long miles){
         modifyAccountTypeFlow.update(mnemonic, miles);
         GeneralResponse response = new GeneralResponse<String>(true, "Updated");
         return new ResponseEntity(response, HttpStatus.OK);
-
-           /* @ApiParam(value = "Request body to create a new AccountType.",
-                    required = true)
-            @RequestBody AccountTypeDto accountType)
-
-    {
-        modifyAccountTypeFlow.update(accountType.getMnemonic(), accountType.getMiles());
-        GeneralResponse<String> response = new GeneralResponse<>(true, "accountTypemod");
-        return new ResponseEntity(response, HttpStatus.OK);
-    }*/
-
     }
 }

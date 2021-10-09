@@ -20,7 +20,6 @@ public class AccountTransactionDto implements Serializable {
     private String accountTypeMnemonic;
     private Long amount;
     private LocalDate transactionDate;
-    private AccountTransactionDetailsDto details;
 
     public AccountTransactionDto(){
 
@@ -31,13 +30,7 @@ public class AccountTransactionDto implements Serializable {
         this.accountTypeMnemonic = accountTypeMnemonic;
         this.amount = amount;
         this.transactionDate = transactionDate;
-    }
-    public AccountTransactionDto(Long transactionId, String accountTypeMnemonic, Long amount, LocalDate transactionDate, AccountTransactionDetailsDto details) {
-        this.transactionId = transactionId;
-        this.accountTypeMnemonic = accountTypeMnemonic;
-        this.amount = amount;
-        this.transactionDate = transactionDate;
-        this.details = details;
+
     }
 
     public AccountTransactionDto(AccountTransaction accountTransaction){
@@ -45,9 +38,6 @@ public class AccountTransactionDto implements Serializable {
         this.accountTypeMnemonic = accountTransaction.getAccountType().getMnemonic();
         this.amount = accountTransaction.getAmount();
         this.transactionDate = accountTransaction.getTransactionDate();
-        if (null != accountTransaction.getDetails()){
-            this.details = new AccountTransactionDetailsDto(accountTransaction.getDetails());
-        }
     }
 
     @JsonIgnore
@@ -87,25 +77,18 @@ public class AccountTransactionDto implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    public AccountTransactionDetailsDto getDetails() {
-        return details;
-    }
-
-    public void setDetails(AccountTransactionDetailsDto details) {
-        this.details = details;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransactionDto that = (AccountTransactionDto) o;
-        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountTypeMnemonic, that.accountTypeMnemonic) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate) && Objects.equals(details, that.details);
+        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountTypeMnemonic, that.accountTypeMnemonic) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionId, accountTypeMnemonic, amount, transactionDate, details);
+        return Objects.hash(transactionId, accountTypeMnemonic, amount, transactionDate);
     }
 
     @Override

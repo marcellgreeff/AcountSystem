@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface AccountTransactionRepository extends JpaRepository<AccountTransaction, Long> {
@@ -19,4 +20,10 @@ public interface AccountTransactionRepository extends JpaRepository<AccountTrans
     @Modifying
     @Query(value = "DELETE FROM ACCOUNT_TRANSACTION WHERE ACCOUNT_TYPE_ID = :accountTypeId", nativeQuery = true)
     Integer deleteAccountTransactionById(@Param("accountTypeId") Long accountTypeId);
+
+    @Query(value = "SELECT * FROM ACCOUNT_TRANSACTION WHERE ACCOUNT_TYPE_ID = :accountTypeId", nativeQuery = true)
+    List<AccountTransaction> getAccountTransactionById(@Param("accountTypeId") Long accountTypeId);
+
+    @Query(value = "SELECT * FROM ACCOUNT_TRANSACTION",nativeQuery = true)
+    AccountTransaction getAllAccountTransactions();
 }

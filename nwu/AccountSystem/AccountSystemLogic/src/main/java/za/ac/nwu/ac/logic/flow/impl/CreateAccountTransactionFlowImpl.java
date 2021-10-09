@@ -17,7 +17,6 @@ import javax.transaction.Transactional;
 public class CreateAccountTransactionFlowImpl implements CreateAccountTransactionFlow {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CreateAccountTransactionFlowImpl.class);
-
     private final AccountTransactionTranslator accountTransactionTranslator;
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
 
@@ -31,16 +30,13 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
     public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {
 
         accountTransactionDto.setTransactionId(null);
-
         AccountType accountType = fetchAccountTypeFlow.getAccountTypeDbEntityByMnemonic(
                 accountTransactionDto.getAccountTypeMnemonic());
         if(LOGGER.isDebugEnabled()){
             LOGGER.debug("Got AccountType for {} and the AccountTypeID {}", accountTransactionDto.getAccountTypeMnemonic(), accountType.getAccountTypeId());
         }
-
         AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountType);
         AccountTransaction createdAccountTransaction = accountTransactionTranslator.save(accountTransaction);
-
         AccountTransactionDto results = new AccountTransactionDto(createdAccountTransaction);
         LOGGER.info("The return object is {}", results);
         return results;

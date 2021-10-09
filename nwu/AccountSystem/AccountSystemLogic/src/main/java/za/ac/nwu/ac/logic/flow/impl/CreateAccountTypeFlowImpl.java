@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.logic.flow.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
@@ -16,6 +18,8 @@ import java.util.Set;
 @Component("createAccountTypeFlowName")
 public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAccountTransactionFlowImpl.class);
+
     private final AccountTypeTranslator accountTypeTranslator;
 
     public CreateAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator){
@@ -26,7 +30,11 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
     public AccountTypeDto create(AccountTypeDto accountType) {
         if(null == accountType.getCreationDate()) {
             accountType.setCreationDate(LocalDate.now());
+            if(LOGGER.isDebugEnabled()){
+                LOGGER.debug("Got AccountTypeMnemonic for {} and the AccountTypeName {}", accountType.getMnemonic(), accountType.getAccountTypeName());
+            }
         }
+        LOGGER.info("The return object is {}", accountType);
         return accountTypeTranslator.create(accountType);
     }
 

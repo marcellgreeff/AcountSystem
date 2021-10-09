@@ -22,35 +22,12 @@ import java.util.List;
 @RequestMapping("account-transaction")
 public class AccountTransactionController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAccountTransactionFlowImpl.class);
-
-    private CreateAccountTransactionFlow createAccountTransactionFlow;
     private FetchAccountTransactionFlow fetchAccountTransactionFlow;
 
     @Autowired
-    public AccountTransactionController(CreateAccountTransactionFlow createAccountTransactionFlow, FetchAccountTransactionFlow fetchAccountTransactionFlow){
-        this.createAccountTransactionFlow = createAccountTransactionFlow;
+    public AccountTransactionController(FetchAccountTransactionFlow fetchAccountTransactionFlow){
         this.fetchAccountTransactionFlow = fetchAccountTransactionFlow;
     }
-/*
-    @PostMapping("Create")
-    @ApiOperation(value =  "Creates a new Account Transaction.", notes = "Creates a new AccountTransaction in the DB")
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "The AccountTransaction was created successfully", response = GeneralResponse.class),
-            @ApiResponse(code = 400, message = "Bad request", response = GeneralResponse.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
-    public ResponseEntity<GeneralResponse<AccountTransactionDto>> create(
-            @ApiParam(value = "Request body to create a new AccountTransaction.",
-            required = true)
-            @RequestBody AccountTransactionDto AccountTransaction) {
-        long startTime = System.nanoTime();
-        LOGGER.debug("Create a new AccountTransaction");
-        AccountTransactionDto AccountTransactionResponse = createAccountTransactionFlow.create(AccountTransaction);
-        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransactionResponse);
-        ResponseEntity<GeneralResponse<AccountTransactionDto>> generalResponseResponseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
-        LOGGER.info("Response time {}", ((System.nanoTime() - startTime) / 1000000L));
-        return generalResponseResponseEntity;
-    }*/
 
     @GetMapping("All")
     @ApiOperation(value =  "Gets all the configured Account Types.", notes = "Return a list of account types")

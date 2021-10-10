@@ -2,14 +2,12 @@ package za.ac.nwu.ac.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
-import org.springframework.context.annotation.ComponentScan;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 @ApiModel(value = "AccountTransaction",
         description = "A DTO model that represents the AccountTransaction")
@@ -35,7 +33,7 @@ public class AccountTransactionDto implements Serializable {
 
     public AccountTransactionDto(AccountTransaction accountTransaction){
         this.transactionId = accountTransaction.getTransactionId();
-        this.accountTypeMnemonic = accountTransaction.getAccountType().getMnemonic();
+        this.accountTypeMnemonic = accountTransaction.getAccountTypeId().toString();
         this.amount = accountTransaction.getAmount();
         this.transactionDate = accountTransaction.getTransactionDate();
     }

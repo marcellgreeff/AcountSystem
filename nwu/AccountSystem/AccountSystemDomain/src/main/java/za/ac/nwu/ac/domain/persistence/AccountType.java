@@ -32,7 +32,7 @@ public class AccountType implements Serializable {
     @Column(name = "MILES")
     private Long miles;
 
-    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountTypeId", orphanRemoval = true, cascade = CascadeType.PERSIST)
     private Set<AccountTransaction> accountTransactions;
     public AccountType(){
 

@@ -4,8 +4,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import io.swagger.models.Response;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,13 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
-import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
 import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.ModifyAccountTypeFlow;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -102,7 +98,7 @@ public class AccountTypeController {
                     required = true)
             @PathVariable("mnemonic") final String mnemonic){
     modifyAccountTypeFlow.deleteAccountTypeByMnemonic(mnemonic);
-    GeneralResponse response = new GeneralResponse<String>(true, "Deleted" );
+    GeneralResponse<String> response = new GeneralResponse<String>(true, "Deleted" );
     return new ResponseEntity(response,HttpStatus.OK);
     }
 
@@ -133,7 +129,7 @@ public class AccountTypeController {
             @RequestParam("miles") final Long miles){
         System.out.println(date + "========" + currentDate);
         modifyAccountTypeFlow.update(mnemonic, miles, date, currentDate);
-        GeneralResponse response = new GeneralResponse<>(true, "Updated");
+        GeneralResponse<String> response = new GeneralResponse<>(true, "Updated");
         return new ResponseEntity(response, HttpStatus.OK);
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("account-transaction")
 public class AccountTransactionController {
 
-    private FetchAccountTransactionFlow fetchAccountTransactionFlow;
+    private final FetchAccountTransactionFlow fetchAccountTransactionFlow;
 
     @Autowired
     public AccountTransactionController(FetchAccountTransactionFlow fetchAccountTransactionFlow){
